@@ -14,7 +14,7 @@ namespace Device {
     class InputDevice : public virtual Device {
     public:
         InputDevice(int device_serial_fd,
-            std::unique_ptr<Services::Listener::DeviceListener> listener)
+            std::unique_ptr<Listener::DeviceListener> listener)
             : Device(device_serial_fd),
             listener_(std::move(listener)),
             active_(false) {
@@ -43,7 +43,7 @@ namespace Device {
         }
 
     protected:
-        std::unique_ptr<Services::Listener::DeviceListener> listener_;
+        std::unique_ptr<Listener::DeviceListener> listener_;
         std::atomic<bool> active_;
         std::mutex mutex_;
 
